@@ -2,12 +2,16 @@ trigger:
   branches:
     include:
     - master
+
 stages:
 - stage: Build_APK
+
   jobs:
-  - job: Job
+  - job: FlutterBuild
+  
     pool:
       vmImage: ubuntu-latest
+
     steps:
     - task: FlutterInstall@0
       inputs:
@@ -35,4 +39,3 @@ stages:
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         replaceExistingArchive: true
-
